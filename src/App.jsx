@@ -33,9 +33,5 @@ const App = () => {
     </BrowserRouter>
   );
 };
-console.log("ReCAPTCHA site key:", import.meta.env.VITE_RECAPTCHA_SITE_KEY);
-console.log("EmailJS service ID:", import.meta.env.VITE_EMAILJS_SERVICE_ID);
-console.log("EmailJS template ID:", import.meta.env.VITE_EMAILJS_TEMPLATE_ID);
-console.log("EmailJS public key:", import.meta.env.VITE_EMAILJS_PUBLIC_KEY);
 
 export default App;
