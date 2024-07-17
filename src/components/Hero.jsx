@@ -1,9 +1,12 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { motion } from "framer-motion";
 import { styles } from "../styles";
-import { ComputersCanvas } from "./canvas";
 
 const Hero = () => {
+  useEffect(() => {
+    console.log("Hero component mounted");
+  }, []);
+
   return (
     <section className="relative w-full h-screen mx-auto">
       <div
@@ -27,16 +30,14 @@ const Hero = () => {
             Versatile Full Stack Web Developer with strong front and back-end
             skills. Expert in creating dynamic web applications and enhancing
             software architecture. Adept at blending programming and design to
-            develop user-focused applications in fast-paced settings.{" "}
+            develop user-focused applications in fast-paced settings.
             <br className="sm:block hidden" />
           </p>
         </div>
       </div>
-      <ComputersCanvas />
+      {/* <ComputersCanvas /> */}
 
-      <div
-        className="absolute xs:bottom-10 bottom-32 w-full flex justify-center items-center" /* absolute because i wanted in the center */
-      >
+      <div className="absolute xs:bottom-10 bottom-32 w-full flex justify-center items-center">
         <a href="#about">
           <div className="w-[35px] h-[64px] rounded-3xl border-4 border-secondary flex justify-center items-start p-2">
             <motion.div
@@ -46,7 +47,7 @@ const Hero = () => {
                 repeat: Infinity,
                 repeatType: "loop",
               }}
-              className="w-3 h-3 rounded-full bg-secondary mb-1" /*margin bottom*/
+              className="w-3 h-3 rounded-full bg-secondary mb-1"
             />
           </div>
         </a>
