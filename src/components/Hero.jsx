@@ -1,9 +1,13 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { motion } from "framer-motion";
 import { styles } from "../styles";
 import SimpleCanvas from "./canvas/SimpleCanvas"; // Adjust the path if necessary
 
 const Hero = () => {
+  useEffect(() => {
+    console.log("Hero component mounted");
+  }, []);
+
   return (
     <section className="relative w-full h-screen mx-auto">
       <div

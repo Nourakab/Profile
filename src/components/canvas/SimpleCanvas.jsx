@@ -33,22 +33,24 @@ const SimpleCanvas = () => {
   }, []);
 
   return (
-    <Canvas
-      frameloop="demand"
-      shadows
-      camera={{ position: [20, 3, 5], fov: 25 }}
-      gl={{ preserveDrawingBuffer: true }}
-    >
-      <Suspense fallback={<CanvasLoader />}>
-        <OrbitControls
-          enableZoom={false}
-          maxPolarAngle={Math.PI / 2}
-          minPolarAngle={Math.PI / 2}
-        />
-        <SimpleBox />
-      </Suspense>
-      <Preload all />
-    </Canvas>
+    <div style={{ width: "100%", height: "100%" }}>
+      <Canvas
+        frameloop="demand"
+        shadows
+        camera={{ position: [20, 3, 5], fov: 25 }}
+        gl={{ preserveDrawingBuffer: true }}
+      >
+        <Suspense fallback={<CanvasLoader />}>
+          <OrbitControls
+            enableZoom={false}
+            maxPolarAngle={Math.PI / 2}
+            minPolarAngle={Math.PI / 2}
+          />
+          <SimpleBox />
+        </Suspense>
+        <Preload all />
+      </Canvas>
+    </div>
   );
 };
 
