@@ -20,7 +20,6 @@ import redux from "./tech/redux.png";
 import tailwind from "./tech/tailwind.png";
 import bootstrap from "./tech/bootstrap.jpeg";
 import typescript from "./tech/typescript.png";
-import threejs from "./tech/threejs.svg";
 import kubernetes from "./tech/kubernetes.png";
 import postgre from "./tech/postgre.png";
 import mySQL from "./tech/mySQL.png";
@@ -61,7 +60,6 @@ export {
   bootstrap,
   tailwind,
   typescript,
-  threejs,
   mySQL,
   postgre,
   oracle,

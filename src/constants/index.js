@@ -13,6 +13,7 @@ import {
   bootstrap,
   nodejs,
   mongodb,
+  googleCloud,
   git,
   docker,
   kubernetes,
@@ -21,7 +22,6 @@ import {
   hungryTummy,
   amazonClone,
   youtubeClone,
-  threejs,
   Hao,
   Rabih,
   Haythem,
@@ -99,8 +99,8 @@ const technologies = [
     icon: mongodb,
   },
   {
-    name: "Three JS",
-    icon: threejs,
+    name: "Google Cloud",
+    icon: googleCloud,
   },
   {
     name: "git",
