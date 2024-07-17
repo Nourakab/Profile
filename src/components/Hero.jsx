@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { motion } from "framer-motion";
 import { styles } from "../styles";
+import ComputerCanvas from "./canvas/Computers";
 
 const Hero = () => {
   useEffect(() => {
@@ -30,12 +31,12 @@ const Hero = () => {
             Versatile Full Stack Web Developer with strong front and back-end
             skills. Expert in creating dynamic web applications and enhancing
             software architecture. Adept at blending programming and design to
-            develop user-focused applications in fast-paced settings.
+            develop user-focused applications in fast-paced settings.{" "}
             <br className="sm:block hidden" />
           </p>
         </div>
       </div>
-      {/* <ComputersCanvas /> */}
+      <ComputerCanvas />
 
       <div className="absolute xs:bottom-10 bottom-32 w-full flex justify-center items-center">
         <a href="#about">
