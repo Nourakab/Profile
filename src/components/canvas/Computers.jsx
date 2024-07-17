@@ -4,20 +4,21 @@ import { OrbitControls, Preload, useGLTF } from "@react-three/drei";
 import CanvasLoader from "../Loader";
 
 const Computers = ({ isMobile }) => {
-  const computer = useGLTF("./desktop_pc/scene.gltf");
-
-  useEffect(() => {
+  let computer;
+  try {
+    computer = useGLTF("./desktop_pc/scene.gltf");
     console.log("GLTF Scene: ", computer.scene);
     console.log("GLTF Nodes: ", computer.nodes);
     console.log("GLTF Materials: ", computer.materials);
-  }, [computer]);
+  } catch (error) {
+    console.error("Error loading GLTF model: ", error);
+    return null; // Render nothing if there's an error loading the model
+  }
 
   return (
     <mesh>
-      <hemisphereLight intensity={0.15} groundColor="black" />{" "}
-      {/* This is to add lightness */}
-      <pointLight intensity={1} />{" "}
-      {/* This is the light on the screen of the computer */}
+      <hemisphereLight intensity={0.15} groundColor="black" />
+      <pointLight intensity={1} />
       <spotLight
         position={[-20, 50, 10]}
         angle={0.12}
@@ -26,7 +27,6 @@ const Computers = ({ isMobile }) => {
         castShadow
         shadow-mapSize={1024}
       />
-      {/* This is the overall lightness of the model */}
       <primitive
         object={computer.scene}
         scale={isMobile ? 0.7 : 0.75}
