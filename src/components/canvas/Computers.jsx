@@ -1,10 +1,37 @@
-import React, { Suspense, useEffect, useState } from "react";
+import React, { useEffect, useState, Suspense } from "react";
 import { Canvas } from "@react-three/fiber";
 import { OrbitControls, Preload, useGLTF } from "@react-three/drei";
 import CanvasLoader from "../Loader";
 
 const Computers = ({ isMobile }) => {
   const { scene } = useGLTF("./desktop_pc/scene.glb");
+
+  useEffect(() => {
+    return () => {
+      scene.traverse((object) => {
+        if (object.isMesh) {
+          object.geometry.dispose();
+          if (object.material.isMaterial) {
+            cleanMaterial(object.material);
+          } else {
+            for (const material of object.material) cleanMaterial(material);
+          }
+        }
+      });
+    };
+  }, [scene]);
+
+  const cleanMaterial = (material) => {
+    material.dispose();
+
+    // Dispose of textures if they exist
+    for (const key in material) {
+      const value = material[key];
+      if (value && typeof value === "object" && "minFilter" in value) {
+        value.dispose();
+      }
+    }
+  };
 
   return (
     <mesh>
@@ -20,7 +47,7 @@ const Computers = ({ isMobile }) => {
       <pointLight intensity={1} />
       <primitive
         object={scene}
-        scale={isMobile ? 0.7 : 0.75}
+        scale={isMobile ? 1.4 : 1.8}
         position={isMobile ? [0, -3, -2.2] : [0, -3.25, -1.5]}
         rotation={[-0.01, -0.2, -0.1]}
       />
@@ -32,21 +59,15 @@ const ComputersCanvas = () => {
   const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
-    // Add a listener for changes to the screen size
     const mediaQuery = window.matchMedia("(max-width: 500px)");
-
-    // Set the initial value of the `isMobile` state variable
     setIsMobile(mediaQuery.matches);
 
-    // Define a callback function to handle changes to the media query
     const handleMediaQueryChange = (event) => {
       setIsMobile(event.matches);
     };
 
-    // Add the callback function as a listener for changes to the media query
     mediaQuery.addEventListener("change", handleMediaQueryChange);
 
-    // Remove the listener when the component is unmounted
     return () => {
       mediaQuery.removeEventListener("change", handleMediaQueryChange);
     };
@@ -68,7 +89,6 @@ const ComputersCanvas = () => {
         />
         <Computers isMobile={isMobile} />
       </Suspense>
-
       <Preload all />
     </Canvas>
   );
