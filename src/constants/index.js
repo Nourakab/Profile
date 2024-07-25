@@ -99,20 +99,8 @@ const technologies = [
     icon: mongodb,
   },
   {
-    name: "Google Cloud",
-    icon: googleCloud,
-  },
-  {
     name: "git",
     icon: git,
-  },
-  {
-    name: "docker",
-    icon: docker,
-  },
-  {
-    name: "kubernetes",
-    icon: kubernetes,
   },
 ];
 
