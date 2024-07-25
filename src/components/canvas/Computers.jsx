@@ -3,6 +3,10 @@ import { Canvas } from "@react-three/fiber";
 import { OrbitControls, Preload, useGLTF } from "@react-three/drei";
 import CanvasLoader from "../Loader";
 
+// Global counter for WebGL contexts
+let webGLContextCount = 0;
+const MAX_WEBGL_CONTEXTS = 16;
+
 const Computers = ({ isMobile }) => {
   const { scene } = useGLTF("./desktop_pc/scene.glb");
 
@@ -79,7 +83,27 @@ const ComputersCanvas = () => {
       shadows
       dpr={[1, 2]}
       camera={{ position: [20, 3, 5], fov: 25 }}
-      gl={{ preserveDrawingBuffer: true }}
+      gl={{
+        preserveDrawingBuffer: true,
+        onContextLost: (event) => {
+          event.preventDefault();
+          console.log("WebGL context lost");
+          webGLContextCount--;
+          console.log(`WebGL context count: ${webGLContextCount}`);
+        },
+        onContextRestored: () => {
+          console.log("WebGL context restored");
+        },
+        onContextCreated: (gl) => {
+          console.log("WebGL context created");
+          webGLContextCount++;
+          console.log(`WebGL context count: ${webGLContextCount}`);
+          if (webGLContextCount > MAX_WEBGL_CONTEXTS) {
+            console.warn("Too many WebGL contexts. Disposing the oldest one.");
+            gl.getExtension("WEBGL_lose_context").loseContext();
+          }
+        },
+      }}
     >
       <Suspense fallback={<CanvasLoader />}>
         <OrbitControls
