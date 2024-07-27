@@ -1,41 +1,11 @@
-import React, { useEffect, useState, Suspense } from "react";
+import React, { Suspense, useEffect, useState } from "react";
 import { Canvas } from "@react-three/fiber";
 import { OrbitControls, Preload, useGLTF } from "@react-three/drei";
+
 import CanvasLoader from "../Loader";
 
-// Global counter for WebGL contexts
-let webGLContextCount = 0;
-const MAX_WEBGL_CONTEXTS = 16;
-
 const Computers = ({ isMobile }) => {
-  const { scene } = useGLTF("./desktop_pc/scene.glb");
-
-  useEffect(() => {
-    return () => {
-      scene.traverse((object) => {
-        if (object.isMesh) {
-          object.geometry.dispose();
-          if (object.material.isMaterial) {
-            cleanMaterial(object.material);
-          } else {
-            for (const material of object.material) cleanMaterial(material);
-          }
-        }
-      });
-    };
-  }, [scene]);
-
-  const cleanMaterial = (material) => {
-    material.dispose();
-
-    // Dispose of textures if they exist
-    for (const key in material) {
-      const value = material[key];
-      if (value && typeof value === "object" && "minFilter" in value) {
-        value.dispose();
-      }
-    }
-  };
+  const computer = useGLTF("./desktop_pc/scene.gltf");
 
   return (
     <mesh>
@@ -50,8 +20,8 @@ const Computers = ({ isMobile }) => {
       />
       <pointLight intensity={1} />
       <primitive
-        object={scene}
-        scale={isMobile ? 1.4 : 1.8}
+        object={computer.scene}
+        scale={isMobile ? 0.7 : 0.75}
         position={isMobile ? [0, -3, -2.2] : [0, -3.25, -1.5]}
         rotation={[-0.01, -0.2, -0.1]}
       />
@@ -63,15 +33,21 @@ const ComputersCanvas = () => {
   const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
+    // Add a listener for changes to the screen size
     const mediaQuery = window.matchMedia("(max-width: 500px)");
+
+    // Set the initial value of the `isMobile` state variable
     setIsMobile(mediaQuery.matches);
 
+    // Define a callback function to handle changes to the media query
     const handleMediaQueryChange = (event) => {
       setIsMobile(event.matches);
     };
 
+    // Add the callback function as a listener for changes to the media query
     mediaQuery.addEventListener("change", handleMediaQueryChange);
 
+    // Remove the listener when the component is unmounted
     return () => {
       mediaQuery.removeEventListener("change", handleMediaQueryChange);
     };
@@ -83,27 +59,7 @@ const ComputersCanvas = () => {
       shadows
       dpr={[1, 2]}
       camera={{ position: [20, 3, 5], fov: 25 }}
-      gl={{
-        preserveDrawingBuffer: true,
-        onContextLost: (event) => {
-          event.preventDefault();
-          console.log("WebGL context lost");
-          webGLContextCount--;
-          console.log(`WebGL context count: ${webGLContextCount}`);
-        },
-        onContextRestored: () => {
-          console.log("WebGL context restored");
-        },
-        onContextCreated: (gl) => {
-          console.log("WebGL context created");
-          webGLContextCount++;
-          console.log(`WebGL context count: ${webGLContextCount}`);
-          if (webGLContextCount > MAX_WEBGL_CONTEXTS) {
-            console.warn("Too many WebGL contexts. Disposing the oldest one.");
-            gl.getExtension("WEBGL_lose_context").loseContext();
-          }
-        },
-      }}
+      gl={{ preserveDrawingBuffer: true }}
     >
       <Suspense fallback={<CanvasLoader />}>
         <OrbitControls
@@ -113,6 +69,7 @@ const ComputersCanvas = () => {
         />
         <Computers isMobile={isMobile} />
       </Suspense>
+
       <Preload all />
     </Canvas>
   );

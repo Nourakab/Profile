@@ -3,7 +3,6 @@ export { default as BallCanvas } from "./canvas/Ball";
 export { default as ComputersCanvas } from "./canvas/Computers";
 export { default as StarsCanvas } from "./canvas/Stars";
 export { default as Hero } from "./Hero";
-export { default as Scroll } from "./Scroll";
 export { default as Navbar } from "./Navbar";
 export { default as About } from "./About";
 export { default as Tech } from "./Tech";
