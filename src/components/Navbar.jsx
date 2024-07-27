@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { FaLinkedin } from "react-icons/fa";
 
 import { styles } from "../styles";
 import { navLinks } from "../constants";
 import { menu, close } from "../assets";
 import nouraLogo from "../assets/nouraLogo.png";
+import cvIcon from "../assets/cv-icon.webp";
 
 const Navbar = () => {
   const [active, setActive] = useState("");
@@ -29,8 +31,8 @@ const Navbar = () => {
         >
           <img src={nouraLogo} alt="logo" className="w-9 h-6 object-contain" />
           <p className="text-white text-[18px] font-bold cursor-pointer flex">
-            Noura &nbsp;
-            <span className="sm:block hidden">|Noura Kabbara</span>
+            Noura Kabbara &nbsp;
+            <span className="sm:block hidden">|Portfolio</span>
           </p>
         </Link>
         <ul className="list-none hidden sm:flex flex-row gap-10">
@@ -47,6 +49,29 @@ const Navbar = () => {
               <a href={`#${Link.id}`}> {Link.title} </a>
             </li>
           ))}
+          <li>
+            <a
+              href="https://www.linkedin.com/in/nourakabbara/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-white text-[24px]" // Ensure icon matches the text color and size
+            >
+              <FaLinkedin />
+            </a>
+          </li>
+          <li>
+            <a
+              href="https://docs.google.com/document/d/1zFxrNk2PU95cdMLDN_TLP8Q0J7t8jpvVM5jSkIBY7XU/edit?usp=sharing"
+              target="_blank" //Links open in a new tab for security
+              rel="noopener noreferrer" //Links open in a new tab for security
+            >
+              <img
+                src={cvIcon}
+                alt="CV"
+                className="w-10 h-10 mt-[-9px] object-contain"
+              />
+            </a>
+          </li>
         </ul>
 
         <div className="sm:hidden flex flex-1 justify-end items-center">
@@ -78,6 +103,29 @@ const Navbar = () => {
                   <a href={`#${Link.id}`}> {Link.title} </a>
                 </li>
               ))}
+              <li>
+                <a
+                  href="https://www.linkedin.com/in/nourakabbara/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-white text-[24px]" // Ensure icon matches the text color and size
+                >
+                  <FaLinkedin />
+                </a>
+              </li>
+              <li className="items-start ml-[-6px]">
+                <a
+                  href="https://docs.google.com/document/d/1zFxrNk2PU95cdMLDN_TLP8Q0J7t8jpvVM5jSkIBY7XU/edit?usp=sharing"
+                  target="_blank" //Links open in a new tab for security
+                  rel="noopener noreferrer" //Links open in a new tab for security
+                >
+                  <img
+                    src={cvIcon}
+                    alt="CV"
+                    className="w-10 h-10 object-contain"
+                  />
+                </a>
+              </li>
             </ul>
           </div>
         </div>

@@ -2,6 +2,7 @@ import { useState, useRef } from "react";
 import { motion } from "framer-motion";
 import emailjs from "@emailjs/browser";
 import ReCAPTCHA from "react-google-recaptcha";
+import { FaArrowUp } from "react-icons/fa";
 
 import { styles } from "../styles";
 import { EarthCanvas } from "./canvas";
@@ -94,6 +95,10 @@ const Contact = () => {
       );
   };
 
+  const handleScrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
   return (
     <div className="xl:mt-12 xl:flex-row flex-col-reverse flex gap-10 overflow-hidden">
       <motion.div
@@ -177,6 +182,24 @@ const Contact = () => {
       >
         <EarthCanvas />
       </motion.div>
+
+      <div className="hidden xl:block fixed bottom-5 right-5">
+        <button
+          onClick={handleScrollToTop}
+          className="bg-secondary text-white p-3 rounded-full shadow-md hover:bg-secondary-dark focus:outline-none"
+        >
+          Back to Top
+        </button>
+      </div>
+
+      <div className="xl:hidden fixed bottom-5 right-5">
+        <button
+          onClick={handleScrollToTop}
+          className="bg-secondary text-white p-3 rounded-full shadow-md hover:bg-secondary-dark focus:outline-none"
+        >
+          <FaArrowUp />
+        </button>
+      </div>
     </div>
   );
 };

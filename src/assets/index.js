@@ -10,7 +10,6 @@ import close from "./close.svg";
 
 import css from "./tech/css.png";
 import docker from "./tech/docker.png";
-import git from "./tech/git.png";
 import html from "./tech/html.png";
 import javascript from "./tech/javascript.png";
 import mongodb from "./tech/mongodb.png";
@@ -18,15 +17,8 @@ import nodejs from "./tech/nodejs.png";
 import reactjs from "./tech/reactjs.png";
 import redux from "./tech/redux.png";
 import tailwind from "./tech/tailwind.png";
-import bootstrap from "./tech/bootstrap.jpeg";
 import typescript from "./tech/typescript.png";
 import kubernetes from "./tech/kubernetes.png";
-import postgre from "./tech/postgre.png";
-import mySQL from "./tech/mySQL.png";
-import oracle from "./tech/oracle.jpeg";
-import azure from "./tech/azure.jpeg";
-import aws from "./tech/aws.jpeg";
-import googleCloud from "./tech/googleCloud.png";
 
 import villeDeLaval from "./company/villeDeLaval.png";
 import bnc from "./company/bnc.png";
@@ -50,22 +42,14 @@ export {
   close,
   css,
   docker,
-  git,
   html,
   javascript,
   mongodb,
   nodejs,
   reactjs,
   redux,
-  bootstrap,
   tailwind,
   typescript,
-  mySQL,
-  postgre,
-  oracle,
-  azure,
-  aws,
-  googleCloud,
   kubernetes,
   villeDeLaval,
   bnc,

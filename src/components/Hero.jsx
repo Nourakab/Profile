@@ -1,9 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { styles } from "../styles";
 import { ComputersCanvas } from "./canvas";
+import { TypeAnimation } from "react-type-animation";
 
 const Hero = () => {
+  const [displayText, setDisplayText] = useState(false);
+
   return (
     <section className="relative w-full h-screen mx-auto">
       <div
@@ -20,16 +23,41 @@ const Hero = () => {
             Hi, I'm
             <span className="text-[#915eff]"> Noura</span>
           </h1>
-          <p
-            className={`${styles.heroSubText} mt-2 text-white-100`}
-            style={{ textAlign: "justify" }}
-          >
-            Versatile Full Stack Web Developer with strong front and back-end
-            skills. Expert in creating dynamic web applications and enhancing
-            software architecture. Adept at blending programming and design to
-            develop user-focused applications in fast-paced settings.{" "}
-            <br className="sm:block hidden" />
-          </p>
+          {!displayText && (
+            <p className={`${styles.heroSubText} mt-2 text-white-100`}>
+              I develop
+              <TypeAnimation
+                cursor={false} // omit the default css typing animation class, otherwise we won't be able to manipulate it manually
+                className={"text-[#915eff]"} // pass custom cursor className that will be manipulated (defaults below)
+                sequence={[
+                  " Web Applications",
+                  500,
+                  " Modern Websites",
+                  500,
+                  " User Interfaces",
+                  500,
+                  " Responsive Interfaces",
+                  500,
+                  " ", // Keep the space to reset
+                  100,
+                  () => setDisplayText(true),
+                ]}
+                repeat={0}
+              />
+            </p>
+          )}
+          {displayText && (
+            <p
+              className={`${styles.heroSubText} mt-2 text-white-100`}
+              style={{ textAlign: "justify" }}
+            >
+              As a versatile Full Stack Web Developer, I possess a unique blend
+              of front and back-end expertise. I specialize in creating dynamic
+              and user-centric web applications. Let’s work together to turn
+              your ideas into reality and create something extraordinary!{" "}
+              <br className="sm:block hidden" />
+            </p>
+          )}
         </div>
       </div>
 

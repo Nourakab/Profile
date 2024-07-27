@@ -10,11 +10,8 @@ import {
   reactjs,
   redux,
   tailwind,
-  bootstrap,
   nodejs,
   mongodb,
-  googleCloud,
-  git,
   docker,
   kubernetes,
   villeDeLaval,
@@ -99,8 +96,12 @@ const technologies = [
     icon: mongodb,
   },
   {
-    name: "git",
-    icon: git,
+    name: "Docker",
+    icon: docker,
+  },
+  {
+    name: "Kubernetes",
+    icon: kubernetes,
   },
 ];
 
