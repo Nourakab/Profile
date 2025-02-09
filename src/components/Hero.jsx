@@ -1,8 +1,8 @@
-import React, { useState } from "react";
-import { motion } from "framer-motion";
-import { styles } from "../styles";
-import { ComputersCanvas } from "./canvas";
-import { TypeAnimation } from "react-type-animation";
+import React, { useState } from 'react';
+import { motion } from 'framer-motion';
+import { styles } from '../styles';
+import { ComputersCanvas } from './canvas';
+import { TypeAnimation } from 'react-type-animation';
 
 const Hero = () => {
   const [displayText, setDisplayText] = useState(false);
@@ -28,17 +28,17 @@ const Hero = () => {
               I develop
               <TypeAnimation
                 cursor={false} // omit the default css typing animation class, otherwise we won't be able to manipulate it manually
-                className={"text-[#915eff]"} // pass custom cursor className that will be manipulated (defaults below)
+                className={'text-[#915eff]'} // pass custom cursor className that will be manipulated (defaults below)
                 sequence={[
-                  " Web Applications",
+                  ' Web Applications',
                   500,
-                  " Modern Websites",
+                  ' Modern Websites',
                   500,
-                  " User Interfaces",
+                  ' User Interfaces',
                   500,
-                  " Responsive Interfaces",
+                  ' Responsive Interfaces',
                   500,
-                  " ", // Keep the space to reset
+                  ' ', // Keep the space to reset
                   100,
                   () => setDisplayText(true),
                 ]}
@@ -49,12 +49,12 @@ const Hero = () => {
           {displayText && (
             <p
               className={`${styles.heroSubText} mt-2 text-white-100`}
-              style={{ textAlign: "justify" }}
+              style={{ textAlign: 'justify' }}
             >
               As a versatile Full Stack Web Developer, I possess a unique blend
               of front and back-end expertise. I specialize in creating dynamic
               and user-centric web applications. Let’s work together to turn
-              your ideas into reality and create something extraordinary!{" "}
+              your ideas into reality and create something extraordinary!{' '}
               <br className="sm:block hidden" />
             </p>
           )}
@@ -73,7 +73,7 @@ const Hero = () => {
               transition={{
                 duration: 1.5,
                 repeat: Infinity,
-                repeatType: "loop",
+                repeatType: 'loop',
               }}
               className="w-3 h-3 rounded-full bg-secondary mb-1"
             />
