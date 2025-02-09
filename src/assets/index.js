@@ -9,7 +9,6 @@ import menu from './menu.svg';
 import close from './close.svg';
 
 import css from './tech/css.png';
-import mysql from './tech/mysql.png';
 import html from './tech/html.png';
 import javascript from './tech/javascript.png';
 import mongodb from './tech/mongodb.png';
@@ -49,7 +48,6 @@ export {
   redux,
   tailwind,
   typescript,
-  mysql,
   villeDeLaval,
   hungryTummy,
   amazonClone,

@@ -13,7 +13,6 @@ import {
   nodejs,
   mongodb,
   google,
-  mysql,
   villeDeLaval,
   hungryTummy,
   amazonClone,
@@ -97,10 +96,6 @@ const technologies = [
   {
     name: 'Google',
     icon: google,
-  },
-  {
-    name: 'MySql',
-    icon: mysql,
   },
 ];
 
