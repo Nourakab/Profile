@@ -1,15 +1,15 @@
-import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
-import { FaLinkedin } from "react-icons/fa";
+import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
+import { FaLinkedin } from 'react-icons/fa';
 
-import { styles } from "../styles";
-import { navLinks } from "../constants";
-import { menu, close } from "../assets";
-import nouraLogo from "../assets/nouraLogo.png";
-import cvIcon from "../assets/cv-icon.webp";
+import { styles } from '../styles';
+import { navLinks } from '../constants';
+import { menu, close } from '../assets';
+import nouraLogo from '../assets/nouraLogo.png';
+import cvIcon from '../assets/cv-icon.webp';
 
 const Navbar = () => {
-  const [active, setActive] = useState("");
+  const [active, setActive] = useState('');
   const [toggle, setToggle] = useState(false);
 
   return (
@@ -25,7 +25,7 @@ const Navbar = () => {
           to="/" //top of the page
           className="flex items-center gap-2"
           onClick={() => {
-            setActive(""); //to track where we are on the page
+            setActive(''); //to track where we are on the page
             window.scrollTo(0, 0); // to scroll to the top of the page
           }}
         >
@@ -41,8 +41,8 @@ const Navbar = () => {
               key={Link.id}
               className={`${
                 active === Link.title
-                  ? "text-white" /*if active render the text in white */
-                  : "text-secondary" /*if not active render */
+                  ? 'text-white' /*if active render the text in white */
+                  : 'text-secondary' /*if not active render */
               } hover:text-white text-[18px] font-medium cursor-pointer`}
               onClick={() => setActive(Link.title)}
             >
@@ -61,7 +61,7 @@ const Navbar = () => {
           </li>
           <li>
             <a
-              href="https://docs.google.com/document/d/1zFxrNk2PU95cdMLDN_TLP8Q0J7t8jpvVM5jSkIBY7XU/edit?usp=sharing"
+              href="https://docs.google.com/document/d/1Ib9gewqPf8t6CVvjwBzg3lIjjUCEppW_CNzQzsbCaHE/edit?usp=sharing"
               target="_blank" //Links open in a new tab for security
               rel="noopener noreferrer" //Links open in a new tab for security
             >
@@ -83,7 +83,7 @@ const Navbar = () => {
           />
 
           <div
-            className={`${!toggle ? "hidden" : "flex"} 
+            className={`${!toggle ? 'hidden' : 'flex'} 
           p-6 black-gradient absolute top-20 right-0 mx-4 my-2 min-w-[140px] z-10 rounded-xl`}
           >
             <ul className="list-none flex justify-end items-start flex-col gap-4">
@@ -92,8 +92,8 @@ const Navbar = () => {
                   key={Link.id}
                   className={`${
                     active === Link.title
-                      ? "text-white" /*if active render the text in white */
-                      : "text-secondary" /*if not active render */
+                      ? 'text-white' /*if active render the text in white */
+                      : 'text-secondary' /*if not active render */
                   } font-poppins font-medium cursor-pointer text-[16px]`}
                   onClick={() => {
                     setToggle(!toggle);
